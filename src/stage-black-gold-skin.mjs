@@ -6,7 +6,7 @@ export const STAGE_BLACK_GOLD_GLOBAL_KEY = "__PASEO_STAGE_BLACK_GOLD_SKIN__";
 
 const STAGE_BLACK_GOLD_CONFIGURATION = {
   globalKey: STAGE_BLACK_GOLD_GLOBAL_KEY,
-  version: 18,
+  version: 19,
   styleIdentifier: STAGE_BLACK_GOLD_STYLE_ID,
   overlayIdentifier: STAGE_BLACK_GOLD_OVERLAY_ID,
   heroImageDataUrl: null,
@@ -446,6 +446,16 @@ function installStageBlackGoldSkin(configuration) {
       #root [data-testid="sidebar-schedules"]:hover,
       #root [data-testid="settings-sidebar"] button:hover {
         background-color: color-mix(in srgb, ${configuration.theme.colors.accent} 14%, transparent) !important;
+      }
+      /* The skin's overlay is a body-level fixed inset:0 sheet with an opaque
+         background. Paseo's #paseo-browser-resident-webviews host is also body-level at
+         z-index 0 but comes earlier in the DOM, so the overlay paints over an open
+         browser pane and the page reads as a blank gray sheet. Raise the pane host
+         above the overlay rather than demoting the overlay, which would drop the
+         artwork behind Paseo's other body-level layers. Parked panes stay 1x1 with
+         pointer-events none, so this costs nothing when no browser tab is open. */
+      #paseo-browser-resident-webviews {
+        z-index: 2 !important;
       }
       #${configuration.overlayIdentifier} {
         position: fixed;
