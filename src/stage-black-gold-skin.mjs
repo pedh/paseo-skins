@@ -6,7 +6,7 @@ export const STAGE_BLACK_GOLD_GLOBAL_KEY = "__PASEO_STAGE_BLACK_GOLD_SKIN__";
 
 const STAGE_BLACK_GOLD_CONFIGURATION = {
   globalKey: STAGE_BLACK_GOLD_GLOBAL_KEY,
-  version: 17,
+  version: 18,
   styleIdentifier: STAGE_BLACK_GOLD_STYLE_ID,
   overlayIdentifier: STAGE_BLACK_GOLD_OVERLAY_ID,
   heroImageDataUrl: null,
@@ -270,7 +270,7 @@ function installStageBlackGoldSkin(configuration) {
         setImportantStyle(
           element,
           "background-image",
-          `linear-gradient(90deg, color-mix(in srgb, ${configuration.theme.colors.background} 34%, transparent), transparent)`,
+          `linear-gradient(90deg, color-mix(in srgb, ${configuration.theme.colors.background} 17%, transparent), color-mix(in srgb, ${configuration.theme.colors.background} 17%, transparent))`,
         );
         setImportantStyle(element, "backdrop-filter", "blur(10px) saturate(0.94)");
       } else if (isBottomChromeSurface) {
@@ -480,11 +480,8 @@ function installStageBlackGoldSkin(configuration) {
       #${configuration.overlayIdentifier} [data-paseo-skin-layer="shade"] {
         background:
           linear-gradient(90deg,
-            color-mix(in srgb, ${configuration.theme.colors.background} 34%, transparent) 0%,
-            color-mix(in srgb, ${configuration.theme.colors.background} 18%, transparent) 24%,
-            color-mix(in srgb, ${configuration.theme.colors.background} 8%, transparent) 50%,
-            color-mix(in srgb, ${configuration.theme.colors.background} 6%, transparent) 76%,
-            color-mix(in srgb, ${configuration.theme.colors.background} 20%, transparent) 100%),
+            color-mix(in srgb, ${configuration.theme.colors.background} 12%, transparent),
+            color-mix(in srgb, ${configuration.theme.colors.background} 12%, transparent)),
           linear-gradient(0deg,
             color-mix(in srgb, ${configuration.theme.colors.background} 30%, transparent) 0%,
             transparent 28%, transparent 72%,
